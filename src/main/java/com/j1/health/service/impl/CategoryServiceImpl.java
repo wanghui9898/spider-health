@@ -3,8 +3,10 @@ package com.j1.health.service.impl;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.j1.health.dao.CategoryDao;
 import com.j1.health.service.CategoryService;
 
 /**
@@ -12,15 +14,18 @@ import com.j1.health.service.CategoryService;
  * @author 王辉
  *
  */
-@Service("test")
+@Service("categoryService")
 public class CategoryServiceImpl implements CategoryService{
+	
+	@Autowired
+	private CategoryDao categoryDao;
 
 	public Object get(Object id) {
 		return null;
 	}
 
 	public int saveOrUpdate(Object entity) {
-		return 0;
+		return this.categoryDao.insert(entity);
 	}
 
 	public int delete(Object id) {
