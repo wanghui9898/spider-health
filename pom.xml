@@ -12,6 +12,7 @@
     <mybatis.version>3.2.8</mybatis.version>
     <mybatis-spring.version>1.2.2</mybatis-spring.version>
     <log4j.version>1.2.16</log4j.version>
+    <slf4j-api.version>1.7.7</slf4j-api.version>
   </properties>
 
   <dependencies>
@@ -95,6 +96,11 @@
 		    <groupId>log4j</groupId>
 		    <artifactId>log4j</artifactId>
 		    <version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j-api.version}</version>
 		</dependency>
   </dependencies>
   
