@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="
+         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+ 	      http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd
+ 		 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+
+	<!-- transaction -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean name="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="create*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="remove*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="add*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="upload*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="apply*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="get*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="gen*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="pay*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="callBack*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="notify*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="send*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="push*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="save*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="delete*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="del*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="update*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="insert*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="log*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="next*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="*" read-only="true" />
+			<tx:method name="do*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="refund*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="pushMsg*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+		<aop:advisor pointcut="execution(* com.j1.health.service.impl..*.*(..))" advice-ref="txAdvice" order="1" />
+	    <aop:advisor advice-ref="druid-stat-interceptor" pointcut-ref="druid-stat-pointcut" />
+	</aop:config>
+	
+	  <!-- 配置druid监控spring jdbc -->
+    <!-- <bean id="druid-stat-interceptor" class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor" />
+    <bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut" scope="prototype">
+        <property name="patterns">
+            <list>
+                <value>com.jh.hzzxyy.service.*</value>
+                <value>com.jh.hzzxyy.dao.*</value>
+            </list>
+        </property>
+    </bean> -->
+	
+</beans>
