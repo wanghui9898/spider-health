@@ -61,7 +61,7 @@
 
 	<aop:config>
 		<aop:advisor pointcut="execution(* com.j1.health.service.impl..*.*(..))" advice-ref="txAdvice" order="1" />
-	    <aop:advisor advice-ref="druid-stat-interceptor" pointcut-ref="druid-stat-pointcut" />
+	  <!--   <aop:advisor advice-ref="druid-stat-interceptor" pointcut-ref="druid-stat-pointcut" /> -->
 	</aop:config>
 	
 	  <!-- 配置druid监控spring jdbc -->

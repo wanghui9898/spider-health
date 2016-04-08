@@ -3,6 +3,8 @@ package com.j1.health.service.impl;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
+
 import com.j1.health.service.CategoryService;
 
 /**
@@ -10,6 +12,7 @@ import com.j1.health.service.CategoryService;
  * @author 王辉
  *
  */
+@Service("test")
 public class CategoryServiceImpl implements CategoryService{
 
 	public Object get(Object id) {

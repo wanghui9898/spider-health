@@ -37,7 +37,7 @@
 		<property name="testOnReturn" value="false" />
 
 		<!-- 监控统计用的filter:stat 日志用的filter:log4j 防御sql注入的filter:wal -->
-		<property name="filters" value="stat,log4j,wall" />
+		<!-- <property name="filters" value="stat,log4j,wall" /> -->
 	</bean>
 
 	<!-- <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"> 
