@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.j1.health.dao.IllnessDao">
+
+    <insert id="insertIllnessByBatch" parameterType="java.util.List"  useGeneratedKeys="true">
+	   	insert into f_illness (category_id,illnees_name,illness_url,version,create_time)   
+    	values  
+    <foreach collection="list" item="item" index="index" separator="," >  
+        (#{item.categoryId},#{item.illneesName},#{item.illnessUrl},#{item.version},now())  
+    </foreach>  
+	</insert>
+	
+</mapper> 
