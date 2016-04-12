@@ -6,21 +6,25 @@
 
     <resultMap id="category" type="com.j1.health.model.Category"/>
     
-    <insert id="insert" parameterType="category"  keyProperty="sid" useGeneratedKeys="true">
-	   INSERT INTO  f_category (
-	         sid,
-	         item,
-	         name,
-	         version,
-	         create_time
+    <insert id="insertCategoryByMap" parameterType="Map"  keyProperty="sid" useGeneratedKeys="true">
+    	 INSERT INTO  f_big_category (
+    	      big_category_name,
+    	      version
+    	      ) values (
+    	      #{bigCategoryName},
+    	      #{version}
+    	      )
+    </insert>
+    
+    <insert id="insert" parameterType="category"  keyProperty="id" useGeneratedKeys="true">
+	   INSERT INTO  t_test (
+	         id,
+	         name
 		)
 		VALUES
 		( 
 		 null,
-		 #{item},
-		 #{name},
-		 #{version},
-		 now()
+		 #{name}
 		)
 	</insert>
 </mapper> 

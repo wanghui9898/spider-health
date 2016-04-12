@@ -5,7 +5,7 @@
 	<!-- 基础设置 -->
 	<settings>
 		<!-- changes from the defaults -->
-		<setting name="lazyLoadingEnabled" value="false" />
+		<setting name="lazyLoadingEnabled" value="true" />
 		<!-- 表名重用预编译的SQL语句 -->
 		<setting name="defaultExecutorType" value="REUSE" />
 		<!-- 全局映射器启用缓存 -->
@@ -19,11 +19,11 @@
 		<!-- 允许使用列标签代替列名 -->
 		<setting name="useColumnLabel" value="true" />
 		<!-- 允许使用自定义的主键值(比如由程序生成的UUID 32位编码作为键值)，数据表的PK生成策略将被覆盖 -->
-		<!-- <setting name="useGeneratedKeys" value="true" /> -->
+		<setting name="useGeneratedKeys" value="true" />
 		<!-- 给予被嵌套的resultMap以字段-属性的映射支持 -->
 		<setting name="autoMappingBehavior" value="FULL" />
 		<!-- 对于批量更新操作缓存SQL以提高性能 -->
-		<!-- <setting name="defaultExecutorType" value="BATCH" /> -->
+		<!-- <setting name="defaultExecutorType" value="simple" /> -->
 		<!-- 数据库超过25000秒仍未响应则超时 -->
 		<setting name="defaultStatementTimeout" value="25000" />
 	</settings>

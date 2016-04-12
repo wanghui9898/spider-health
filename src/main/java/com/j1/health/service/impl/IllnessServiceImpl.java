@@ -6,41 +6,38 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.j1.health.dao.CategoryDao;
-import com.j1.health.service.CategoryService;
+import com.j1.health.dao.IllnessDao;
+import com.j1.health.service.IllnessService;
 
-/**
- * 类目服务
- * @author 王辉
- *
- */
-@Service("categoryService")
-public class CategoryServiceImpl implements CategoryService{
+@Service("illnessService")
+public class IllnessServiceImpl implements IllnessService{
 	
 	@Autowired
-	private CategoryDao categoryDao;
+	private IllnessDao illnessDao;
 
+	@Override
 	public Object get(Object id) {
 		return null;
 	}
 
+	@Override
 	public int saveOrUpdate(Object entity) {
-		return this.categoryDao.insert(entity);
-	}
-
-	public int delete(Object id) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	@Override
+	public int delete(Object id) {
+		return 0;
+	}
+
+	@Override
 	public List getAll(Map reqParam) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public int insertCategoryByMap(Map<String, Object> param) {
-		return this.categoryDao.insertCategoryByMap(param);
+	public int insertIllnessByBatch(List<Map<String,Object>> list){
+		return this.illnessDao.insertIllnessByBatch(list);
 	}
 
 }
