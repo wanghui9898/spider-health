@@ -1,4 +1,4 @@
-package com.j1.health.client;
+package com.j1.health.spider.url;
 
 import com.j1.health.process.DrugUrlProcessor;
 
