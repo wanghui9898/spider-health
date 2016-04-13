@@ -3,7 +3,8 @@ package com.j1.health.persitent.mysql.service;
 import java.util.List;
 import java.util.Map;
 
-import com.j1.health.service.common.IBaseService;
+import com.j1.health.persitent.mysql.service.base.IBaseService;
+
 
 public interface CategoryIllnessService extends IBaseService{
 	

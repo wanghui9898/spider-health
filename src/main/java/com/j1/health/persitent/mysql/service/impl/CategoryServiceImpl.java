@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.j1.health.dao.CategoryDao;
-import com.j1.health.service.CategoryService;
+import com.j1.health.persitent.mysql.service.CategoryService;
+
 
 /**
  * 类目服务

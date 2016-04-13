@@ -9,7 +9,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.j1.health.service.CategoryIllnessService;
+import com.j1.health.persitent.mysql.service.CategoryIllnessService;
 import com.j1.health.util.ConsField;
 import com.j1.health.util.StringUtil;
 

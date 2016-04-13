@@ -1,6 +1,7 @@
 package com.j1.health.spider.url;
 
-import com.j1.health.process.DrugUrlProcessor;
+
+import com.j1.health.spider.process.DrugUrlProcessor;
 
 import us.codecraft.webmagic.Spider;
 

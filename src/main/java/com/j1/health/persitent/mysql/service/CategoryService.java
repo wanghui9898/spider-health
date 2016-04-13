@@ -2,7 +2,8 @@ package com.j1.health.persitent.mysql.service;
 
 import java.util.Map;
 
-import com.j1.health.service.common.IBaseService;
+import com.j1.health.persitent.mysql.service.base.IBaseService;
+
 
 /**
  * 类目服务

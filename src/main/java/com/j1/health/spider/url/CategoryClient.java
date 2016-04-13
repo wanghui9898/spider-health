@@ -1,7 +1,7 @@
 package com.j1.health.spider.url;
 
-import com.j1.health.pipeline.IllnessPipeline;
-import com.j1.health.process.category.CategoryProcessor;
+import com.j1.health.spider.pipeline.IllnessPipeline;
+import com.j1.health.spider.process.category.CategoryProcessor;
 import com.j1.health.util.SpringContextUtil;
 
 import us.codecraft.webmagic.Spider;

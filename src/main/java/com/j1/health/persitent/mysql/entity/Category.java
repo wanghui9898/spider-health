@@ -2,7 +2,8 @@ package com.j1.health.persitent.mysql.entity;
 
 import org.apache.ibatis.type.Alias;
 
-import com.j1.health.model.base.CommonEntity;
+import com.j1.health.persitent.mysql.entity.base.CommonEntity;
+
 
 @Alias(value = "category")
 public class Category extends CommonEntity{
