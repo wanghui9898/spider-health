@@ -6,9 +6,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.j1.health.persitent.mysql.service.CategoryIllnessService;
-import com.j1.health.persitent.mysql.service.CategoryService;
-import com.j1.health.persitent.mysql.service.IllnessService;
+import com.j1.health.persitent.service.CategoryIllnessService;
+import com.j1.health.persitent.service.CategoryService;
+import com.j1.health.persitent.service.IllnessService;
 
 
 @Service("categoryIllnessService")

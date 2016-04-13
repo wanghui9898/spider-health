@@ -2,7 +2,7 @@ package com.j1.health.persitent.service;
 
 import java.util.Map;
 
-import com.j1.health.persitent.mysql.service.base.IBaseService;
+import com.j1.health.persitent.service.base.IBaseService;
 
 
 /**
