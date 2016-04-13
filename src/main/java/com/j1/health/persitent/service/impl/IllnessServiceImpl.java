@@ -6,8 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.j1.health.dao.IllnessDao;
-import com.j1.health.service.IllnessService;
+import com.j1.health.persitent.dao.mysql.IllnessDao;
+import com.j1.health.persitent.service.IllnessService;
 
 @Service("illnessService")
 public class IllnessServiceImpl implements IllnessService{

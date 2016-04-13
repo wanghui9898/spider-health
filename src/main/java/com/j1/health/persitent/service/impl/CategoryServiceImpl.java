@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.j1.health.dao.CategoryDao;
+import com.j1.health.persitent.dao.mysql.CategoryDao;
 import com.j1.health.persitent.service.CategoryService;
 
 

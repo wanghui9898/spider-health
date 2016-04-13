@@ -8,7 +8,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 
-import com.j1.health.process.base.BasePageProcess;
+import com.j1.health.spider.process.base.BasePageProcess;
 import com.j1.health.util.ConsField;
 
 import us.codecraft.webmagic.Page;

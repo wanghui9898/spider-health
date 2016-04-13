@@ -2,7 +2,7 @@ package com.j1.health.spider.process;
 
 import java.util.List;
 
-import com.j1.health.process.base.BasePageProcess;
+import com.j1.health.spider.process.base.BasePageProcess;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.selector.Html;
