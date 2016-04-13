@@ -14,6 +14,8 @@ public class SpringContextUtil {
 	
 	static{
 		applicationContext = new ClassPathXmlApplicationContext(new String[]{"classpath:conf/applicationContext*.xml"});
+		System.out.println(applicationContext);
+		System.out.println(1);
 	}
 	
 	/*public static ApplicationContext getApplicationContext(){

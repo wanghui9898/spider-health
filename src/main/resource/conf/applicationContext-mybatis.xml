@@ -17,6 +17,6 @@
     <!-- 扫描basePackage下所有以@MyBatisRepository标识的 接口-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.j1.health.persitent.dao.mysql"/>
-        <property name="annotationClass" value="com.j1.health.persitent.dao.MyBatisRepository"/>
+        <property name="annotationClass" value="com.j1.health.persitent.dao.base.MyBatisRepository"/>
     </bean>
 </beans>
