@@ -66,8 +66,8 @@ public class IllnessPipeline implements Pipeline{
 		if(null != url && title != null && url.length == title.length){
 			for(int i=0;i<url.length;i++){
 				Map<String,Object> map = new LinkedHashMap<>();
-				map.put("illneesName", title[i]);
-				map.put("illnessUrl", url[i]);
+				map.put("illneesName", title[i].trim());
+				map.put("illnessUrl", url[i].trim());
 				map.put("version", "1");//以后做活
 				list.add(map);
 			}
@@ -80,7 +80,7 @@ public class IllnessPipeline implements Pipeline{
 	private Map<String,Object> convertStringToMap(String[] category){
 		Map<String,Object> map = new HashMap<String,Object>();
 		if(null != category){
-			map.put("bigCategoryName", category[0]);
+			map.put("bigCategoryName", category[0].trim());
 			map.put("version", "1");//以后做成动态的
 		}
 		return map;

@@ -10,5 +10,9 @@ import com.j1.health.persitent.dao.base.MyBatisRepository;
 public interface IllnessDao extends CrudDao{
 	
 	public int insertIllnessByBatch(List<Map<String,Object>> list);
+	
+	public List<Map<String,Object>> getIllnessList();//获取疾病id和url
+	
+	public int insertIllnessCauseByBatch(List<Map<String,Object>> list);//批量插入数据
 
 }
