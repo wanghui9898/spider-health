@@ -18,6 +18,8 @@ public class CollectionUtil {
 	
 	private static transient List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
 	
+	private static transient List<Map<String,Object>> error_list = new ArrayList<Map<String,Object>>();
+	
 	/**
 	 * 存放队列副本
 	 * @param queue
@@ -51,6 +53,22 @@ public class CollectionUtil {
 	 */
 	public static synchronized List<Map<String,Object>> getList(){
 		return list;
+	}
+	
+	/**
+	 * 失败的放入到队列中
+	 * @param map
+	 */
+	public static synchronized void putErrorQueue(Map<String,Object> map){
+		error_list.add(map);
+	}
+	
+	/**
+	 * 获取失败结果集
+	 * @return
+	 */
+	public static synchronized List<Map<String,Object>> getErrorList(){
+		return error_list;
 	}
 	
 }

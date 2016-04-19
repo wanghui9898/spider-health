@@ -15,4 +15,6 @@ public class ConsField {
 	
 	public static final String Illness = "illness";//疾病
 	
+	public static final String PROCEDURE_NAME = "proName";
+	
 }

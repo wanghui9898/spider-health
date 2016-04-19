@@ -13,6 +13,8 @@ public interface IllnessDao extends CrudDao{
 	
 	public List<Map<String,Object>> getIllnessList();//获取疾病id和url
 	
+	public List<Map<String, Object>> getErrorIllnessList();//抓取没有爬虫下来的url
+	
 	public int insertIllnessCauseByBatch(List<Map<String,Object>> list);//批量插入数据
 
 }

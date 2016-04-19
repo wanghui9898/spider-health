@@ -66,5 +66,25 @@ public class IllnessServiceImpl implements IllnessService{
 	public int insertIllnessCauseByBatch(List<Map<String, Object>> param) {
 		return this.illnessDao.insertIllnessCauseByBatch(param);
 	}
+	
+	/**
+	 * 获取未跑完的f_illness
+	 */
+	public List<Map<String, Object>> getErrorIllnessList() {
+		List<Map<String, Object>> resultList = new ArrayList<>();
+		List<Map<String, Object>> illness_Map = this.illnessDao.getErrorIllnessList();
+		if(null != illness_Map && illness_Map.size() > 0){
+			for(Map<String, Object> map:illness_Map){
+				Object url = map.get("illnessUrl");
+				Object sid = map.get("sid");
+				Map<String, Object> rMap = new HashMap<>();
+				if(null != url && sid != null){
+					rMap.put(url.toString(), sid);
+					resultList.add(rMap);
+				}
+			}
+		}
+		return resultList;
+	}
 
 }

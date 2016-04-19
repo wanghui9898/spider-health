@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.j1.health.persitent.service.CategoryIllnessService;
+import com.j1.health.persitent.service.PIllnessService;
 import com.j1.health.util.ConsField;
 import com.j1.health.util.StringUtil;
 
@@ -27,6 +28,9 @@ public class IllnessPipeline implements Pipeline{
 	
 	@Autowired
 	private CategoryIllnessService categoryIllnessService;
+	
+	@Autowired
+	private PIllnessService pIllnessService;
 	
 	/***
 	 * 处理控制台
@@ -51,6 +55,8 @@ public class IllnessPipeline implements Pipeline{
 					List<Map<String,Object>> illness = convertStringToMap(url,title);
 					try {
 						this.categoryIllnessService.insertCategoryAndIllnessByBatch(cg, illness);
+						//去除重复数据
+						this.pIllnessService.deletePIllness();
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

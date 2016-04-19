@@ -20,6 +20,14 @@
 		from f_illness t
 	</select>
 	
+	<!--  获取未抓取下来的url -->
+	<select id="getErrorIllnessList"  resultType="java.util.Map">
+		select 
+		t.sid as sid,
+		t.illness_url as illnessUrl
+		from f_illness_error t
+	</select>
+	
 	<!-- 批量插入数据 -->
 	<insert id="insertIllnessCauseByBatch" parameterType="java.util.List"  useGeneratedKeys="true">
 	   	insert into f_illness_cause_url (illness_id,illness_cause_url,version)   

@@ -1,8 +1,12 @@
 package com.j1.health.util;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.BlockingQueue;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.pipeline.Pipeline;
@@ -13,6 +17,8 @@ import us.codecraft.webmagic.processor.PageProcessor;
  *
  */
 public class SpiderThread implements Runnable{
+	
+	protected Logger logger = LoggerFactory.getLogger(getClass()); 
 	
 	private String url;//爬取的url
 	
@@ -43,11 +49,16 @@ public class SpiderThread implements Runnable{
 					Set<String> keySet = map.keySet();
 					for(String url:keySet){
 						if(null == pipeline){
-							Spider spider = Spider.create(pageProcessor).addUrl(url);
-							Thread executorThread = new Thread(spider);
-							executorThread.start();
-							executorThread.join();
-							System.out.println("thread is over!");
+							try{
+								Spider spider = Spider.create(pageProcessor).addUrl(url);
+								Thread executorThread = new Thread(spider);
+								executorThread.start();
+								executorThread.join();
+							}catch (Exception e){
+								e.printStackTrace();
+								logger.error("%C{1}", url + "抓取失败!");
+								pushErrorUrlToQueue(url,map);
+							}
 						}else if(null != pipeline){
 							Spider spider = Spider.create(pageProcessor).addUrl(url).addPipeline(pipeline);
 							Thread executorThread = new Thread(spider);
@@ -57,9 +68,24 @@ public class SpiderThread implements Runnable{
 					}
 				}
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				logger.error("%C{1}", e.getMessage());
 			}
 		}
+	}
+	
+	
+	/**
+	 * 如果失败的话放入到失败队列中
+	 * @param url
+	 * @param map
+	 */
+	private void pushErrorUrlToQueue(String url,Map<String,Object> map){
+		Set<Map<String,Object>> copyQueue = CollectionUtil.getDuplicateQueue();
+		Map<String,Object> resultMap = new LinkedHashMap<>();
+		resultMap.put("illnessId", map.get(url));
+		resultMap.put("illnessCauseUrl", url);
+		resultMap.put("version", "1");//以后做活
+		CollectionUtil.putErrorQueue(resultMap);
 	}
 	
 }

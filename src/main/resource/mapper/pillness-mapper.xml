@@ -2,9 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace必须指向Dao接口 -->
-<mapper namespace="com.j1.health.persitent.dao.mysql.PIllnessDao">
-	
-	<!--执行存储过程-->
+<mapper namespace="com.j1.health.persitent.dao.mysql.IllnessDao">
+
     <delete id="deleteDuplicate" statementType="CALLABLE">
     	<![CDATA[  
     		{call p_f_illness_bak}
