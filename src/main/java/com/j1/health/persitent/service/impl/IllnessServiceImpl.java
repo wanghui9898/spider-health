@@ -87,4 +87,29 @@ public class IllnessServiceImpl implements IllnessService{
 		return resultList;
 	}
 
+	@Override
+	public List<Map<String, Object>> getIllnessMedecineList() {
+		List<Map<String, Object>> resultList = new ArrayList<>();
+		List<Map<String, Object>> illness_Map = this.illnessDao.getIllnessMedecineList();
+		if(null != illness_Map && illness_Map.size() > 0){
+			for(Map<String, Object> map:illness_Map){
+				Object url = map.get("illnessUrl");
+				Object sid = map.get("sid");
+				Map<String, Object> rMap = new HashMap<>();
+				if(null != url && sid != null){
+					rMap.put(url.toString(), sid);
+					resultList.add(rMap);
+				}
+			}
+		}
+		return resultList;
+	}
+	
+	/**
+	 * 插入疾病和药品库url
+	 */
+	public int insertIllnessMedecineByBatch(List<Map<String, Object>> param) {
+		return this.illnessDao.insertIllnessMedecineByBatch(param);
+	}
+
 }

@@ -14,6 +14,10 @@ public interface IllnessService extends IBaseService{
 	
 	public List<Map<String,Object>> getErrorIllnessList();//获取没有爬虫下来的url
 	
+	public List<Map<String,Object>> getIllnessMedecineList();//获取疾病对应的商品url
+	
 	public int insertIllnessCauseByBatch(List<Map<String,Object>> param);
+	
+	public int insertIllnessMedecineByBatch(List<Map<String,Object>> param);//插入疾病和医药url
 
 }

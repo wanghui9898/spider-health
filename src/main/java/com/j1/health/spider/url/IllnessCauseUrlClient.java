@@ -50,7 +50,6 @@ public class IllnessCauseUrlClient {
 		if(resultCode > 0){
 			System.out.println("调用存储过程成功!");
 		}
-		
 	}
 	
 }
