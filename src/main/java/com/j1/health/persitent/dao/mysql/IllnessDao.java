@@ -17,8 +17,12 @@ public interface IllnessDao extends CrudDao{
 	
 	public List<Map<String,Object>> getIllnessMedecineList();//获取疾病对应的商品url
 	
+	public List<Map<String,Object>> getMedecineList(Map<String,Object> param);//获取药品库
+	
 	public int insertIllnessCauseByBatch(List<Map<String,Object>> list);//批量插入数据
 	
 	public int insertIllnessMedecineByBatch(List<Map<String,Object>> param);//插入疾病和医药url
+	
+	public int insertMedecineByBatch(List<Map<String, Object>> param);
 
 }

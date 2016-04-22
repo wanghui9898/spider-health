@@ -111,5 +111,32 @@ public class IllnessServiceImpl implements IllnessService{
 	public int insertIllnessMedecineByBatch(List<Map<String, Object>> param) {
 		return this.illnessDao.insertIllnessMedecineByBatch(param);
 	}
+	
+	/**
+	 * 获取药品库
+	 */
+	public List<Map<String, Object>> getMedecineList(Map<String,Object> param) {
+		List<Map<String, Object>> resultList = new ArrayList<>();
+		List<Map<String, Object>> illness_Map = this.illnessDao.getMedecineList(param);
+		if(null != illness_Map && illness_Map.size() > 0){
+			for(Map<String, Object> map:illness_Map){
+				Object url = map.get("illnessUrl");
+				Object sid = map.get("sid");
+				Map<String, Object> rMap = new HashMap<>();
+				if(null != url && sid != null){
+					rMap.put(url.toString(), sid);
+					resultList.add(rMap);
+				}
+			}
+		}
+		return resultList;
+	}
+	
+	/**
+	 * 批量插入药品库
+	 */
+	public int insertMedecineByBatch(List<Map<String, Object>> param) {
+		return this.illnessDao.insertMedecineByBatch(param);
+	}
 
 }

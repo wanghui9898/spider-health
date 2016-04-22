@@ -36,6 +36,15 @@
 		from f_illneess_medecine_url t
 	</select>
 	
+	<!--  获取药品库 -->
+	<select id="getMedecineList"  resultType="java.util.Map" parameterType="java.util.Map">
+		select 
+		t.illness_id as sid,
+		t.illness_medecine_url as illnessUrl
+		from f_illness_medecine_spider_url t
+		limit #{start},#{pageSize}
+	</select>
+	
 	<!-- 批量插入数据 -->
 	<insert id="insertIllnessCauseByBatch" parameterType="java.util.List"  useGeneratedKeys="true">
 	   	insert into f_illness_cause_url (illness_id,illness_cause_url,version)   
@@ -51,6 +60,15 @@
     	values  
 	    <foreach collection="list" item="item" index="index" separator="," >  
 	        (#{item.illnessId},#{item.illnessMedecineUrl})
+	    </foreach>
+	</insert>
+	
+	<!-- 批量插入药品库 -->
+	<insert id="insertMedecineByBatch" parameterType="java.util.List" >
+	   	insert into f_medecine_url (illness_id,medecine_url,medecine_name,medecine_price,medecine_image_url,medecine_product_name)   
+    	values  
+	    <foreach collection="list" item="item" index="index" separator="," >  
+	        (#{item.illnessId},#{item.medecineUrl},#{item.medecineName},#{item.medecinePrice},#{item.medecineImageUrl},#{item.medecineProductName})
 	    </foreach>
 	</insert>
 	
