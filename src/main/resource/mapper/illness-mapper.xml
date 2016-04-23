@@ -45,6 +45,15 @@
 		limit #{start},#{pageSize}
 	</select>
 	
+	<!--  获取疾病属性url -->
+	<select id="getIllnessToAttributeUrl"  resultType="java.util.Map" parameterType="java.util.Map">
+		select 
+		t.illness_id as sid,
+		t.illness_cause_url as illnessUrl
+		from f_illness_cause_url t
+		order by t.illness_id asc
+	</select>
+	
 	<!-- 批量插入数据 -->
 	<insert id="insertIllnessCauseByBatch" parameterType="java.util.List"  useGeneratedKeys="true">
 	   	insert into f_illness_cause_url (illness_id,illness_cause_url,version)   
@@ -69,6 +78,22 @@
     	values  
 	    <foreach collection="list" item="item" index="index" separator="," >  
 	        (#{item.illnessId},#{item.medecineUrl},#{item.medecineName},#{item.medecinePrice},#{item.medecineImageUrl},#{item.medecineProductName})
+	    </foreach>
+	</insert>
+	
+	<!-- 批量疾病url -->
+	<insert id="insertIllnessToAttributeUrlByBatch" parameterType="java.util.List" >
+	   	insert into f_illness_attribute_url (illness_id,illness_cause_url
+										,illness_protect_url ,illness_concurrence_url
+										,illness_symptom_url,illness_check_url,illness_identify_url
+										,illness_treatment_url,illness_nurse_url,illness_maintenance_url)   
+    	values  
+	    <foreach collection="list" item="item" index="index" separator="," >  
+	        (#{item.illnessId},#{item.illnessCauseUrl}
+					,#{item.illnessProtectUrl},#{item.illnessConcurrenceUrl}
+					,#{item.illnessSymptomUrl},#{item.illnessCheckUrl}
+					,#{item.illnessIdentifyUrl},#{item.illnessTreatmentUrl}
+					,#{item.illnessNurseUrl},#{item.illnessMaintenanceUrl})
 	    </foreach>
 	</insert>
 	

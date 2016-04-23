@@ -17,27 +17,6 @@ public class IllnessServiceImpl implements IllnessService{
 	@Autowired
 	private IllnessDao illnessDao;
 
-	@Override
-	public Object get(Object id) {
-		return null;
-	}
-
-	@Override
-	public int saveOrUpdate(Object entity) {
-		return 0;
-	}
-
-	@Override
-	public int delete(Object id) {
-		return 0;
-	}
-
-	@Override
-	public List getAll(Map reqParam) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public int insertIllnessByBatch(List<Map<String,Object>> list){
 		return this.illnessDao.insertIllnessByBatch(list);
 	}
@@ -137,6 +116,31 @@ public class IllnessServiceImpl implements IllnessService{
 	 */
 	public int insertMedecineByBatch(List<Map<String, Object>> param) {
 		return this.illnessDao.insertMedecineByBatch(param);
+	}
+	
+	/**
+	 * 获取疾病明细
+	 */
+	public List<Map<String, Object>> getIllnessToAttributeUrl() {
+		List<Map<String, Object>> resultList = new ArrayList<>();
+		List<Map<String, Object>> illness_Map = this.illnessDao.getIllnessToAttributeUrl();
+		if(null != illness_Map && illness_Map.size() > 0){
+			for(Map<String, Object> map:illness_Map){
+				Object url = map.get("illnessUrl");
+				Object sid = map.get("sid");
+				Map<String, Object> rMap = new HashMap<>();
+				if(null != url && sid != null){
+					rMap.put(url.toString(), sid);
+					resultList.add(rMap);
+				}
+			}
+		}
+		return resultList;
+	}
+	
+	//批量插入属性
+	public int insertIllnessToAttributeUrlByBatch(List<Map<String, Object>> param) {
+		return this.illnessDao.insertIllnessToAttributeUrlByBatch(param);
 	}
 
 }
