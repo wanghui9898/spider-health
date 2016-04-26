@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.j1.health.persitent.dao.mysql.IllnessAttributeDao">
+	
+	<!--动态sql查询-->
+    <select id="getDynamicInfo" parameterType="java.util.Map" statementType="STATEMENT" resultType="java.util.Map">
+    		<![CDATA[ 
+			        select 
+			        illness_id as sid,
+			        ${colName} as illnessUrl
+			        from ${tableName}
+			        order by illness_id asc
+			  ]]> 
+    </select>
+    
+	 	<!--批量插入病因-->
+	 	<insert id="insertIllnessCause" parameterType="java.util.List"  useGeneratedKeys="true">
+			  insert into m_illness_cause (illness_id,illness_cause_name)   
+    			values  
+		    <foreach collection="list" item="item" index="index" separator="," >  
+		        (#{item.illnessId},#{item.illnessCauseName})  
+		    </foreach>  
+	 	</insert>
+	 	
+	 	<!--批量插入预防-->
+	 	<insert id="insertIllnessPrevent" parameterType="java.util.List"  useGeneratedKeys="true">
+			  insert into m_illness_protect (illness_id,illness_protect_name)   
+    			values  
+		    <foreach collection="list" item="item" index="index" separator="," >  
+		        (#{item.illnessId},#{item.illnessProtectName})
+		    </foreach>  
+	 	</insert>
+	 	
+	 	<!--批量插入并发症-->
+	 	<insert id="insertIllnessnNeopathy" parameterType="java.util.List"  useGeneratedKeys="true">
+			  insert into m_illness_neopathy (illness_id,illness_neopathy_name)
+    			values  
+		    <foreach collection="list" item="item" index="index" separator="," >  
+		        (#{item.illnessId},#{item.illnessNeopathyName})
+		    </foreach>  
+	 	</insert>
+	 	
+	 	<!--批量插入症状-->
+	 	<insert id="insertIllnessnSymptom" parameterType="java.util.List"  useGeneratedKeys="true">
+			  insert into m_illness_symptom (illness_id,illness_symptom_name)
+    			values  
+		    <foreach collection="list" item="item" index="index" separator="," >  
+		        (#{item.illnessId},#{item.illnessSymptomName})
+		    </foreach>  
+	 	</insert>
+	 	
+	 	<!--批量插入检查-->
+	 	<insert id="insertIllnessnCheck" parameterType="java.util.List"  useGeneratedKeys="true">
+			  insert into m_illness_inspect (illness_id,illness_inspect_name)
+    			values  
+		    <foreach collection="list" item="item" index="index" separator="," >  
+		        (#{item.illnessId},#{item.illnessInspectName})
+		    </foreach>  
+	 	</insert>
+	 	
+	 	<!--批量插入诊断-->
+	 	<insert id="insertIllnessnDiagnosis" parameterType="java.util.List"  useGeneratedKeys="true">
+			  insert into m_illness_diagnosis (illness_id,illness_diagnosis_name)
+    			values  
+		    <foreach collection="list" item="item" index="index" separator="," >  
+		        (#{item.illnessId},#{item.illnessDiagnosisName})
+		    </foreach>  
+	 	</insert>
+	 	
+	 	<!--批量插入治疗-->
+	 	<insert id="insertIllnessnTreat" parameterType="java.util.List"  useGeneratedKeys="true">
+			  insert into m_illness_treat (illness_id,illness_treat_name)
+    			values  
+		    <foreach collection="list" item="item" index="index" separator="," >  
+		        (#{item.illnessId},#{item.illnessTreatName})
+		    </foreach>  
+	 	</insert>
+	 	
+	 	<!--批量插入护理-->
+	 	<insert id="insertIllnessnNurse" parameterType="java.util.List"  useGeneratedKeys="true">
+			  insert into m_illness_nurse (illness_id,illness_nurse_name)
+    			values  
+		    <foreach collection="list" item="item" index="index" separator="," >  
+		        (#{item.illnessId},#{item.illnessNurseName})
+		    </foreach>  
+	 	</insert>
+	 	
+	 	<!--批量插入饮食保健-->
+	 	<insert id="insertIllnessnFood" parameterType="java.util.List"  useGeneratedKeys="true">
+			  insert into m_illness_food (illness_id,illness_food_name)
+    			values  
+		    <foreach collection="list" item="item" index="index" separator="," >  
+		        (#{item.illnessId},#{item.illnessFoodName})
+		    </foreach>  
+	 	</insert>
+	
+</mapper> 
