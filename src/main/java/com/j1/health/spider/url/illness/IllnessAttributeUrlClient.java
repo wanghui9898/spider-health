@@ -3,6 +3,7 @@ package com.j1.health.spider.url.illness;
 import java.util.List;
 import java.util.Map;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.j1.health.persitent.service.attr.IllnessAttributeService;
 import com.j1.health.spider.process.illness.IllnessAttributeValueProcess;
@@ -22,16 +23,17 @@ public class IllnessAttributeUrlClient {
 	public static void main(String[] args)throws Exception {
 		long startTime = System.currentTimeMillis();
 		IllnessAttributeValueProcess process = (IllnessAttributeValueProcess) SpringContextUtil.getBeanbyName("illnessAttributeValueProcess");
-		process.setType(ConsField.food);
+		process.setType(ConsField.nursing);
 		//使用线程的方式执行爬虫job
 		IllnessAttributeService illnessAttributeService = (IllnessAttributeService) SpringContextUtil.getBeanbyName("illnessAttributeService");
 		Map<String,Object> param = Maps.newLinkedHashMap();
-		param.put("colName", "illness_maintenance_url");
-		param.put("tableName", "f_illness_attribute_url");
-		List<Map<String,Object>> list = illnessAttributeService.getDynamicInfo(param);
-//		List<Map<String,Object>> list = Lists.newArrayList();
-//		param.put("http://jib.xywy.com/il_sii/cause/3697.htm", 1);
-//		list.add(param);
+//		param.put("colName", "illness_maintenance_url");
+//		param.put("tableName", "f_illness_attribute_url");
+//		List<Map<String,Object>> list = illnessAttributeService.getDynamicInfo(param);
+		List<Map<String,Object>> list = Lists.newArrayList();
+		param.put("http://jib.xywy.com/il_sii/nursing/1094.htm", 98);
+//		param.put("http://jib.xywy.com/il_sii/inspect/704.htm", 10);
+		list.add(param);
 		SpiderQueue.addTask(list);
 		CollectionUtil.copyFromQueue(SpiderQueue.getQueue());
 		SpiderThread[] sp = new SpiderThread[10];
