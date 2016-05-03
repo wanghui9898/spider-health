@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.j1.health.persitent.dao.mysql.DrugDao">
+
+	<!--  获取疾病url -->
+	<select id="getDrugList"  resultType="java.util.Map" parameterType="java.util.Map">
+		select 
+		t.illness_id as sid,
+		t.medecine_url as illnessUrl
+		from f_medecine_url t
+    	order by t.sid asc
+    	limit #{start},#{pageSize}
+	</select>
+	
+	<!-- 批量插入到 -->
+	 <insert id="insertDrugByBatch" parameterType="java.util.List"  useGeneratedKeys="true">
+	   	insert into s_drug_attribute_content (
+	   		       illness_id
+				  ,drug_name
+				  ,drug_common_name
+				  ,drug_major_function
+				  ,drug_usage_dosage
+				  ,drug_form
+				  ,drug_bad_react
+				  ,drug_taboo
+				  ,drug_attention
+				  ,drug_element
+				  ,drug_type
+				  ,drug_mutual_action
+				  ,drug_action
+				  ,drug_recipe
+				  ,drug_insurance
+				  ,drug_entrance_china
+				  ,drug_approve_number
+				  ,drug_product_enterprice
+				  ,drug_illness
+	   		)   
+    	values  
+    <foreach collection="list" item="item" index="index" separator="," >  
+        (
+          #{item.illness_id}
+		 ,#{item.drug_name}
+		 ,#{item.drug_common_name}
+		 ,#{item.drug_major_function}
+		 ,#{item.drug_usage_dosage}
+		 ,#{item.drug_form}
+		 ,#{item.drug_bad_react}
+		 ,#{item.drug_taboo}
+		 ,#{item.drug_attention}
+		 ,#{item.drug_element}
+		 ,#{item.drug_type}
+		 ,#{item.drug_mutual_action}
+		 ,#{item.drug_action}
+		 ,#{item.drug_recipe}
+		 ,#{item.drug_insurance}
+		 ,#{item.drug_entrance_china}
+		 ,#{item.drug_approve_number}
+		 ,#{item.drug_product_enterprice}
+		 ,#{item.drug_illness}
+        )  
+    </foreach>  
+	</insert>
+	
+</mapper> 
